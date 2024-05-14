@@ -83,8 +83,27 @@
 
 
 			function playnote(note){
+
+				switch(note){
+					case 'C':
+						C.play()
+					break;
+					case 'G':
+						G.play()
+					break;
+					case 'C2':
+						C2.play()
+					break;
+					case 'E':
+						E.play()
+					break;
+					case 'G2':
+						G2.play()
+					break;
+				}
+				/*
 				let audio = new Audio(note + '.wav')
-				audio.play()
+				audio.play()*/
 				console.log('plays')
 			}
 			function changeNotation(){
