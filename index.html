@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+	<head>
+		<style>
+			body, html{
+				padding: 0;
+				margin:0;
+				background-color: black;
+			}
+
+			table{
+				cursor: pointer;
+				background-color: black;
+				margin-top: 22vh;
+				color:black;
+				border: 2px solid white;
+				font-size: 50px;
+			}
+			#toCenter{
+				text-align: -moz-center;
+			}
+			tr{
+				height: 80px;
+			}
+			th {
+				border: 1px solid white;
+				min-width: 350px;
+
+			}
+			#C{
+				background-color: #9de184;;
+			}
+			#G{
+				background-color: #ffad11;;
+			}
+			#C2{
+				background-color: #4f0;;
+			}
+			#E{
+				background-color: #fb6969;
+			}
+			#G2{
+				background-color: #ff7800;;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="toCenter">
+			<table>
+				<tr onclick="playnote('G2')" id="G2">
+					<th>Sol (Agudo)</th>
+				</tr>
+				<tr onclick="playnote('E')" id="E">
+					<th>Mi</th>
+				</tr>
+				<tr onclick="playnote('C2')" id="C2">
+					<th>Dó (Agudo)</th>
+				</tr>
+				<tr onclick="playnote('G')" id="G">
+					<th>Sol</th>
+				</tr>
+				<tr onclick="playnote('C')" id="C">
+					<th>Dó</th>
+				</tr>
+				
+			</table>
+			<button onclick="changeNotation()">Notação</button>
+		</div>
+
+		<script>
+			let C = new Audio('C.wav')
+			let G = new Audio('G.wav')
+			let C2 = new Audio('C2.wav')
+			let E = new Audio('E.wav')
+			let G2 = new Audio('G2.wav')
+			
+			isToCifra = true
+
+
+			function playnote(note){
+				let audio = new Audio(note + '.wav')
+				audio.play()
+				console.log('plays')
+			}
+			function changeNotation(){
+				
+				notasNome = ['Dó','Sol','Dó (Agudo)','Mi','Sol (Agudo)']
+				notasCifra = ['C','G','C2','E','G2']
+				ths = document.getElementsByTagName('th')
+				
+				if(ths[0].innerText == 'C'){
+					isToCifra = false
+				}
+				
+				notasCifra.reverse()
+				notasNome.reverse()
+
+				for(let i = 0; i < ths.length; i++){
+					if(isToCifra){
+						ths[i].innerText = notasCifra[i]
+					}else{
+						ths[i].innerText = notasNome[i]
+					}
+				}
+
+				isToCifra = !isToCifra
+
+			}
+		</script>
+	</body>
+
+
+</html>
